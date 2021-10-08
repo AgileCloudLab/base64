@@ -1,0 +1,7 @@
+def build(bld):
+
+    bld(features = "cxx cxxprogram",
+        target = "test_base64",
+        source = "test_base64.cpp",
+        use = ["base64-includes", "gtest"]
+    )
