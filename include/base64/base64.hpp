@@ -52,7 +52,7 @@ namespace base64
         {
             return true; 
         }
-        // Find a way to add check for array
+        //Find a way to add check for array
         // else if constexpr (std::is_same<T, std::array<uint8_t, container.size()>>::value)
         // {
         //     return true; 
