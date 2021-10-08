@@ -15,8 +15,8 @@ int main(void)
     std::ifstream in(path, std::ios::binary);
     size_t size = std::filesystem::file_size(path);
 
-    std::string encoded(size -1, '0');
-    in.read(encoded.data(), size -1 );
+    std::string encoded(size, '0');
+    in.read(encoded.data(), size);
 
     auto decoded = base64::decode(encoded);
   

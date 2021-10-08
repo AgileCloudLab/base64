@@ -5,7 +5,12 @@ path = "./example/ruby_data.bin"
 
 encoded = Base64.encode64 data
 
-puts encoded 
+encoded[-1] = '' if encoded[-1] == "\n"
+
+puts encoded
+
+
+
 open(path, "wb") do |file|
   file << encoded
 end
