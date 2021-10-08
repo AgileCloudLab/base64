@@ -2,7 +2,7 @@ require "base64"
 
 expected = "testkjadlskjflkasjfwe08u185u12w3oqew,dmf.smxa"
 
-path = "./example/cpp_data.bin"
+path = "./example/parse_data/cpp_data.bin"
 
 encoded = (File.open path).read
 

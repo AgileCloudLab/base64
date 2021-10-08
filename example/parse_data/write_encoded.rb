@@ -1,7 +1,7 @@
 require "base64"
 
 data = "testkjadlskjflkasjfwe08u185u12w3oqew,dmf.smxa"
-path = "./example/ruby_data.bin"
+path = "./example/parse_data/ruby_data.bin"
 
 encoded = Base64.encode64 data
 

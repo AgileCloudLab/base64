@@ -36,7 +36,8 @@ def build(bld):
 
     bld.recurse("test/test_base64")
 
-    bld.recurse("example")            
+    bld.recurse("example/parse_data")
+    bld.recurse("example/binary_data")
     
 def test(ctx):
     subprocess.call(["./build/test/test_base64/test_base64"], encoding="utf-8")

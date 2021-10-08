@@ -11,7 +11,7 @@
 #include <stdexcept>
 
 namespace base64
-{
+{   
     static const std::array<char, 64> b64chars =
     {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -40,7 +40,13 @@ namespace base64
         48, 49, 50, 51
     };
   
-  
+
+    template <typename> struct get_array_size;
+    template <typename T, size_t S>
+    struct get_array_size<std::array<T, S>> {
+        constexpr static size_t size = S;
+    };
+    
     template<typename T> bool valid_container_type(const T& container)
     {
         (void) container; 
@@ -48,12 +54,18 @@ namespace base64
         {
             return true; 
         }
+        
         else if constexpr (std::is_same<T, std::vector<char>>::value)
         {
             return true; 
         }
-        //Find a way to add check for array
-        // else if constexpr (std::is_same<T, std::array<uint8_t, container.size()>>::value)
+        else if constexpr (std::is_same<T, std::string>::value)
+        {
+            return true;
+        }             
+        // move to usage of tuple size
+        //https://stackoverflow.com/a/69494119/936269
+        // else if constexpr (std::is_same<T, std::array<uint8_t, std::tuple_size<T>>>::value)
         // {
         //     return true; 
         // }
@@ -61,20 +73,13 @@ namespace base64
         // {
         //     return true; 
         // }                
-        else if constexpr (std::is_same<T, std::string>::value)
-        {
-            return true;
-        }     
+
         return false; 
     }
 
     template<typename T> const std::string encode(const T& str)
     {
 
-        // if (!valid_container_type(str))
-        // {
-        //     throw std::invalid_argument("str must be of type std::vector<uint8_t>, std::vector<char>, std::array<uint8_t, size>, std::array<char, size>, or std::string"); 
-        // }        
         std::string result(((str.size() + 2) / 3) * 4, '=');
 
         size_t pad = str.size() % 3;
@@ -105,10 +110,6 @@ namespace base64
 
     template <typename T> const std::string decode(const T& str)
     {
-        // if (!valid_container_type(str))
-        // {
-        //     throw std::invalid_argument("str must be of type std::vector<uint8_t>, std::vector<char>, std::array<uint8_t, size>, std::array<char, size>, or std::string"); 
-        // }
         
         if (str.empty())
         {

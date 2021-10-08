@@ -1,0 +1,7 @@
+def build(bld):
+
+    bld(features = "cxx cxxprogram",
+        target = "binary_data",
+        source = "binary_data.cpp",
+        use = ["base64-includes"]
+    )

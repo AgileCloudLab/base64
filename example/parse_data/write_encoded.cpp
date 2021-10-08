@@ -12,7 +12,7 @@ int main(void)
     std::string data = "testkjadlskjflkasjfwe08u185u12w3oqew,dmf.smxa";
     auto encoded = base64::encode(data);
     
-    std::ofstream out("./example/cpp_data.bin"); 
+    std::ofstream out("./example/parse_data/cpp_data.bin"); 
     out << encoded;
     out.close(); 
     

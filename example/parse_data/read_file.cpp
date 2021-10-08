@@ -8,7 +8,7 @@
 #include <cassert>
 int main(void)
 {
-    const std::string path = "./example/ruby_data.bin";
+    const std::string path = "./example/parse_data/ruby_data.bin";
 
     std::string data = "testkjadlskjflkasjfwe08u185u12w3oqew,dmf.smxa";
 
