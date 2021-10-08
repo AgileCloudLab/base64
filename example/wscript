@@ -1,0 +1,13 @@
+def build(bld):
+
+    bld(features = "cxx cxxprogram",
+        target = "write_encoded",
+        source = "write_encoded.cpp",
+        use = ["base64-includes"]
+    )
+
+    bld(features = "cxx cxxprogram",
+        target = "read_file",
+        source = "read_file.cpp",
+        use = ["base64-includes"]
+    )    

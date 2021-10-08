@@ -34,7 +34,9 @@ def build(bld):
         export_includes="./include/")
     
 
-    bld.recurse("test/test_base64")        
+    bld.recurse("test/test_base64")
+
+    bld.recurse("example")            
     
 def test(ctx):
     subprocess.call(["./build/test/test_base64/test_base64"], encoding="utf-8")
